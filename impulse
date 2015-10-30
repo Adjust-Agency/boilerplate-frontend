@@ -1,0 +1,67 @@
+#! /usr/bin/php
+<?php
+	
+	if(empty($_SERVER['argv'][1])) {
+		echo "Usage impulse [init] <project>\n";
+		exit();
+	}
+	
+	switch( $_SERVER['argv'][1] ){
+		case "init":
+			
+			if(empty( $_SERVER['argv'][2] )) {
+				echo "Invalid project name\n";
+				exit();
+			}
+			
+			$project = $_SERVER['argv'][2];
+			
+			$bower = json_decode(file_get_contents('bower.json'));
+			$bower->name = $project;
+			$bower->description = $project . " front-end";
+				
+			file_put_contents('bower.json', json_encode($bower, JSON_PRETTY_PRINT) );
+			
+			echo "Updating Bower.json\n";
+						
+			$package = json_decode(file_get_contents('package.json'));
+			$package->name = $project;
+			$package->description = $project . " front-end";
+				
+			file_put_contents('package.json', json_encode($package, JSON_PRETTY_PRINT) );
+			
+			echo "Updating Package.json\n";
+			
+			
+				// Remove .git folder
+				echo "Initialize git project\n";
+				
+				exec('rm -rf ./.git');	
+				// init git
+				exec('git init');
+	
+				echo "Updating project\n";
+	
+				passthru('sudo npm install gulp --save-dev');
+				passthru('sudo npm install gulp-autoprefixer --save-dev');
+				passthru('sudo npm install gulp-concat --save-dev');
+				passthru('sudo npm install gulp-imagemin --save-dev');
+				passthru('sudo npm install gulp-jshint --save-dev');
+				passthru('sudo npm install gulp-minify --save-dev');
+				passthru('sudo npm install gulp-minify-css --save-dev');
+				passthru('sudo npm install gulp-sass --save-dev');
+				passthru('sudo npm install gulp-sourcemaps --save-dev');
+				passthru('sudo npm install gulp-uglify --save-dev');
+				passthru('sudo npm install gulp-connect --save-dev');
+				passthru('sudo npm install jshint-stylish --save-dev');
+				
+				
+				passthru('bower install font-awesome --save');
+				passthru('bower install normalize-css --save');
+				passthru('bower install jquery --save');
+			
+			break;
+		default:
+			echo "Unknown command " . $_SERVER['argv'][1] . "\n";
+			exit();
+	}

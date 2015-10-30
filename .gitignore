@@ -1,0 +1,4 @@
+.DS_Store banished!
+/vendor
+/node_modules
+/dist/bower_components
