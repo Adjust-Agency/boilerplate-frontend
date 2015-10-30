@@ -9,7 +9,7 @@ var uglify = require('gulp-uglify'),
 	jshint = require('gulp-jshint'),
 	stylish = require('jshint-stylish');
 var imagemin = require('gulp-imagemin');
-var connect = require('gulp-connect');
+var connect = require('gulp-connect-php');
 
 var src  = "./src/";
 var dist = "./dist/";
