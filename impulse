@@ -9,8 +9,9 @@
 	switch( $_SERVER['argv'][1] ){
 		case "init":
 			
-			if(empty( $_SERVER['argv'][2] )) {
+			if(empty( $_SERVER['argv'][2] ) || !preg_match("/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/i", $_SERVER['argv'][2] )) {
 				echo "Invalid project name\n";
+				echo "Must be a domain ( ex: adjust.be )\n";
 				exit();
 			}
 			
