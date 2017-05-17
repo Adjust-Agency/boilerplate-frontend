@@ -1,5 +1,17 @@
 #! /usr/bin/php
 <?php
+
+	// Utils functions
+	
+	function getPromptEntry ($message, $hidden = false) {
+		echo $message . "\n";
+		$handle = fopen ("php://stdin","r");
+		if($hidden) echo "\033[30;40m";
+		$line = trim(fgets($handle));
+		if($hidden) echo "\033[0m";
+		fclose($handle);
+		return $line;
+	}
 	
 	if(empty($_SERVER['argv'][1])) {
 		echo "Usage impulse [init] <project>\n";
@@ -71,6 +83,33 @@
 					}
 				}
 				
+			break;
+			
+		case "deploy" :
+			
+			function exitOnInvalidEnv() {
+				echo "Invalid environnement\n";
+				echo "Must be staging or production\n";
+				exit();
+			}
+			
+			if(empty( $_SERVER['argv'][2] )) {
+				exitOnInvalidEnv();
+			}
+			
+			switch(trim($_SERVER['argv'][2])){
+				case 'staging':
+					
+					$username = getPromptEntry("Enter your dev.adjust.be username :");
+					$password = getPromptEntry("Enter your dev.adjust.be password :", true);
+					
+					
+					
+					break;
+				default:
+					exitOnInvalidEnv();
+			}
+			
 			break;
 		default:
 			echo "Unknown command " . $_SERVER['argv'][1] . "\n";
