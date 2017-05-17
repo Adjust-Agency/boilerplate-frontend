@@ -62,8 +62,14 @@
 				passthru('bower install normalize-css --save');
 				passthru('bower install jquery --save');
 				
-				passthru('gulp');
-			
+				if(!empty( $_SERVER['argv'][3] )) {
+					switch(trim($_SERVER['argv'][3])) {
+						case '--gulp':
+							passthru('gulp');
+							break;
+					}
+				}
+				
 			break;
 		default:
 			echo "Unknown command " . $_SERVER['argv'][1] . "\n";
