@@ -1,4 +1,5 @@
-.DS_Store banished!
-/vendor
-/node_modules
-/dist/bower_components
+.DS_STORE banished!
+vendor/
+node_modules/
+dist/bower_components/
+composer.lock
