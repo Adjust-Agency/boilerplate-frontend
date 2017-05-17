@@ -97,13 +97,37 @@
 				exitOnInvalidEnv();
 			}
 			
+			$package = json_decode(file_get_contents('package.json'));
+			$project = $package->name;
+			
+			if(empty(trim($project))) {
+				echo "Invalid domain name\n";
+				echo "Use impulse init first\n";
+				exit();
+			}
+			
+			$remote = exec("git remote -v | grep push");
+			preg_match("/(https?:\/\/.*\.git)/i", $remote, $matches);
+
+			if(empty($matches[1])) {
+				echo "Invalid remote repository\n";
+				echo "Push git project to remote server first\n";
+				exit();
+			};
+			
+			$repository 	= trim(strtolower($matches[1]));
+			$isFramework	= is_dir( __DIR__ . '/public' );
+			
 			switch(trim($_SERVER['argv'][2])){
 				case 'staging':
+				
+					$options = '';
+					if( $isFramework ) $options .= ' --with-framework';
 					
 					$username = getPromptEntry("Enter your dev.adjust.be username :");
-					$password = getPromptEntry("Enter your dev.adjust.be password :", true);
 					
-					
+					$command = 'ssh ' . $username . '@dev.adjust.be "/usr/bin/adjtools -d staging --with-project ' . $project . ' --with-remote ' . $repository . $options . '"';
+					passthru($command);
 					
 					break;
 				default:
