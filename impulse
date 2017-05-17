@@ -54,6 +54,7 @@
 				passthru('sudo npm install gulp-uglify --save-dev');
 				passthru('sudo npm install gulp-connect-php --save-dev');
 				passthru('sudo npm install browser-sync --save-dev');
+				passthru('sudo npm install jshint --save-dev');
 				passthru('sudo npm install jshint-stylish --save-dev');
 				
 				
