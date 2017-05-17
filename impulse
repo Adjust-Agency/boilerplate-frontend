@@ -61,6 +61,8 @@
 				passthru('bower install font-awesome --save');
 				passthru('bower install normalize-css --save');
 				passthru('bower install jquery --save');
+				
+				passthru('gulp');
 			
 			break;
 		default:
