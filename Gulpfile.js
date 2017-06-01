@@ -41,7 +41,7 @@ gulp.task('styles', function() {
         .pipe(postcss([
         	autoprefixer({ browsers: ['last 2 versions', 'ie >= 9', 'ChromeAndroid >= 2.3'] }),
         	cssnano()
-        ])
+        ]))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest( dist + 'css/'));
 });
