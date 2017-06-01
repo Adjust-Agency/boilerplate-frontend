@@ -1,15 +1,21 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+
 var sass = require('gulp-sass'),
-	cssnano = require('gulp-cssnano'),
-	sourcemaps = require('gulp-sourcemaps'),
-	autoprefixer = require('gulp-autoprefixer');
+	sourcemaps = require('gulp-sourcemaps')
+	postcss      = require('gulp-postcss');
+	
 var minifyJS = require('gulp-minify');
+
 var uglify = require('gulp-uglify'),
 	jshint = require('gulp-jshint'),
 	stylish = require('jshint-stylish');
+
 var imagemin = require('gulp-imagemin');
 var connect = require('gulp-connect-php');
+
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
 
 var browserSync = require('browser-sync').create();
 
@@ -32,8 +38,10 @@ gulp.task('styles', function() {
     gulp.src( src + 'sass/**/*.scss')
     	.pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie >= 9', 'ChromeAndroid >= 2.3'] }))
-        .pipe(cssnano())
+        .pipe(postcss([
+        	autoprefixer({ browsers: ['last 2 versions', 'ie >= 9', 'ChromeAndroid >= 2.3'] }),
+        	cssnano()
+        ])
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest( dist + 'css/'));
 });

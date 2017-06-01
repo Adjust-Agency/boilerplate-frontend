@@ -56,16 +56,17 @@
 				echo "Updating project\n";
 	
 				passthru('sudo npm install gulp --save-dev');
-				passthru('sudo npm install gulp-autoprefixer --save-dev');
 				passthru('sudo npm install gulp-concat --save-dev');
 				passthru('sudo npm install gulp-imagemin --save-dev');
 				passthru('sudo npm install gulp-jshint --save-dev');
 				passthru('sudo npm install gulp-minify --save-dev');
-				passthru('sudo npm install gulp-cssnano --save-dev');
 				passthru('sudo npm install gulp-sass --save-dev');
+				passthru('sudo npm install gulp-postcss --save-dev');
 				passthru('sudo npm install gulp-sourcemaps --save-dev');
 				passthru('sudo npm install gulp-uglify --save-dev');
 				passthru('sudo npm install gulp-connect-php --save-dev');
+				passthru('sudo npm install autoprefixer --save-dev');
+				passthru('sudo npm install cssnano --save-dev');
 				passthru('sudo npm install browser-sync --save-dev');
 				passthru('sudo npm install jshint --save-dev');
 				passthru('sudo npm install jshint-stylish --save-dev');
