@@ -131,6 +131,18 @@
 					passthru($command);
 					
 					break;
+					
+				case 'production':
+				
+					$options = '';
+					if( $isFramework ) $options .= ' --with-framework';
+					
+					$username = getPromptEntry("Enter your dev.adjust.be username :");
+					
+					$command = 'ssh ' . $username . '@dev.adjust.be "/usr/bin/adjtools -d production --with-project ' . $project . ' ' . $options . '"';
+					passthru($command);
+					
+					break;
 				default:
 					exitOnInvalidEnv();
 			}
