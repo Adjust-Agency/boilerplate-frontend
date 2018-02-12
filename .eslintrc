@@ -1,8 +1,9 @@
 {
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "script"
-    },
+    "env": {
+	  "browser": true,
+	  "es6": true,
+	  "jquery": true
+	},
     "parser": "babel-eslint",
     "extends": "standard",
     "rules": {
