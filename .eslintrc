@@ -1,0 +1,13 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "script"
+    },
+    "parser": "babel-eslint",
+    "extends": "standard",
+    "rules": {
+	    "no-tabs": 0,
+	    "eol-last": 0,
+		"indent": ["warn", "tab"]
+    }
+}

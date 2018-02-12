@@ -1,26 +1,27 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
+const gulp = require('gulp');
+const concat = require('gulp-concat');
 
-var sass = require('gulp-sass'),
-	sourcemaps = require('gulp-sourcemaps')
-	postcss      = require('gulp-postcss');
-	
-var minifyJS = require('gulp-minify');
+const sass = require('gulp-sass'),
+	  sourcemaps = require('gulp-sourcemaps')
+	  postcss      = require('gulp-postcss');
 
-var uglify = require('gulp-uglify'),
-	jshint = require('gulp-jshint'),
-	stylish = require('jshint-stylish');
+const babel = require('gulp-babel');
 
-var imagemin = require('gulp-imagemin');
-var connect = require('gulp-connect-php');
+const minifyJS = require('gulp-minify');
 
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
+const uglify = require('gulp-uglify');
+const eslint = require('gulp-eslint');
 
-var browserSync = require('browser-sync').create();
+const imagemin = require('gulp-imagemin');
+const connect = require('gulp-connect-php');
 
-var src  = "./src/";
-var dist = "./dist/";
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+
+const browserSync = require('browser-sync').create();
+
+const src  = "./src/";
+const dist = "./dist/";
 
 gulp.task('connect', function() {
   connect.server({
@@ -48,10 +49,12 @@ gulp.task('styles', function() {
 
 gulp.task('javascript', function() {
   	gulp.src([ src + 'js/**/*.js'])
-  		.pipe(jshint())
-  		.pipe(jshint.reporter(stylish))
-  		//.pipe(jshint.reporter('fail'))
+  		.pipe(eslint())
   		.pipe(sourcemaps.init())
+  		.pipe(eslint.format())
+  		.pipe(babel({
+	  		presets: ['env']
+	  	}))
   		.pipe(concat('main.js'))
   		.pipe(uglify())
   		.pipe(sourcemaps.write('./'))

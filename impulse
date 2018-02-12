@@ -58,7 +58,9 @@
 				passthru('sudo npm install gulp --save-dev');
 				passthru('sudo npm install gulp-concat --save-dev');
 				passthru('sudo npm install gulp-imagemin --save-dev');
-				passthru('sudo npm install gulp-jshint --save-dev');
+				passthru('sudo npm install gulp-babel babel-core babel-preset-env --save-dev');
+				passthru('sudo npm install gulp-eslint babel-eslint --save-dev');
+				passthru('sudo npm install eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node --save-dev');
 				passthru('sudo npm install gulp-minify --save-dev');
 				passthru('sudo npm install gulp-sass --save-dev');
 				passthru('sudo npm install gulp-postcss --save-dev');
@@ -68,9 +70,6 @@
 				passthru('sudo npm install autoprefixer --save-dev');
 				passthru('sudo npm install cssnano --save-dev');
 				passthru('sudo npm install browser-sync --save-dev');
-				passthru('sudo npm install jshint --save-dev');
-				passthru('sudo npm install jshint-stylish --save-dev');
-				
 				
 				passthru('bower install font-awesome --save');
 				passthru('bower install normalize-css --save');
