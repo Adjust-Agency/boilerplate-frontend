@@ -1,14 +1,14 @@
 {
     "env": {
-	  "browser": true,
-	  "es6": true,
-	  "jquery": true
+    	"browser": true,
+	"es6": true,
+	"jquery": true
 	},
     "parser": "babel-eslint",
     "extends": "standard",
     "rules": {
-	    "no-tabs": 0,
-	    "eol-last": 0,
-		"indent": ["warn", "tab"]
-    }
+    	"no-tabs": 0,
+	"eol-last": 0,
+	"indent": ["warn", "tab"]
+	}
 }
