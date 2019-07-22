@@ -59,6 +59,7 @@
 				passthru('sudo npm install gulp-concat --save-dev');
 				passthru('sudo npm install gulp-imagemin --save-dev');
 				passthru('sudo npm install gulp-babel babel-core babel-preset-env --save-dev');
+				passthru('sudo npm install @babel/core --save-dev');
 				passthru('sudo npm install gulp-eslint babel-eslint --save-dev');
 				passthru('sudo npm install eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node --save-dev');
 				passthru('sudo npm install gulp-minify --save-dev');
