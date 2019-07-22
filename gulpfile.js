@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const concat = require('gulp-concat')
 
 const sass = require('gulp-sass'),
-	  sourcemaps = require('gulp-sourcemaps'
+	  sourcemaps = require('gulp-sourcemaps')
 	  postcss      = require('gulp-postcss')
 
 const babel = require('gulp-babel')
@@ -78,7 +78,7 @@ gulp.task('javascript', () => {
   		
 });
 
-gulp.task('images', function () {
+gulp.task('images', () => {
      return gulp.src([
      		src + 'images/**/*',
      		src + 'img/**/*',
